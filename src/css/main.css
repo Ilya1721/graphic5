@@ -1,0 +1,23 @@
+.margin-top {
+  margin-top: 25px; }
+
+.input-data {
+  margin: 50px auto;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
+  .input-data h3 {
+    padding: 0;
+    margin: 0 0 15px; }
+  .input-data table {
+    border-collapse: collapse; }
+    .input-data table td,
+    .input-data table th {
+      border: 1px solid black;
+      text-align: center;
+      padding: 5px 10px; }
+    .input-data table th {
+      font-size: 0.9em; }
+  .input-data .margin-top {
+    margin-top: 25px; }
