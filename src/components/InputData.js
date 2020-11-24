@@ -6,17 +6,7 @@ class InputData extends React.Component {
     const { p11, p12, p13, p21, p22, p23 } = this.props.firstTask;
     const { tl1, tl2, tls } = this.props.thirdTask;
     const { lf, lh } = this.props.fourthTask;
-    const {
-      omega1,
-      omega2,
-      s1,
-      s2,
-      p,
-      fl1,
-      fl2,
-      t1,
-      t2,
-    } = this.props.fifthTask;
+    const { omega1, omega2, s, p, fl, t1, t2 } = this.props.fifthTask;
 
     return (
       <div className="input-data">
@@ -184,13 +174,13 @@ class InputData extends React.Component {
           <tbody>
             <tr>
               <td>{omega1}</td>
-              <td>{s1}</td>
+              <td>{s}</td>
               <td>{p}</td>
-              <td>{fl1}</td>
+              <td>{fl}</td>
               <td>{t1}</td>
               <td>{omega2}</td>
-              <td>{s2}</td>
-              <td>{fl2}</td>
+              <td>{s}</td>
+              <td>{fl}</td>
               <td>{t2}</td>
             </tr>
           </tbody>
