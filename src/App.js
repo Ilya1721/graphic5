@@ -1,6 +1,7 @@
 import React from "react";
 import "./css/main.css";
 import InputData from "./components/InputData";
+import OutputData from "./components/OutputData";
 
 class App extends React.Component {
   firstTask = {
@@ -49,6 +50,13 @@ class App extends React.Component {
     return (
       <div className="app">
         <InputData
+          firstTask={this.firstTask}
+          secondTask={this.secondTask}
+          thirdTask={this.thirdTask}
+          fourthTask={this.fourthTask}
+          fifthTask={this.fifthTask}
+        />
+        <OutputData
           firstTask={this.firstTask}
           secondTask={this.secondTask}
           thirdTask={this.thirdTask}
