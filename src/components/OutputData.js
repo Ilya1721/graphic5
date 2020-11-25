@@ -121,24 +121,28 @@ class OutputData extends React.Component {
     }
 
     let temp = 0;
+    /*for (let i = omega2; i <= omega2 + s; i++) {
+      temp += 1 / i;
+    }*/
     for (let i = 0; i <= omega2 - s; i++) {
       temp += 1 / (s + i);
     }
-    const tt1 = (1 / fl) * temp;
+    const tt1 = t2 * (1 / fl) * temp;
+    //const tt1 = t2 * temp;
 
     let temp2 = 0;
     for (let i = 0; i < s; i++) {
       temp2 += pow(fl * t, i) / factorial(i);
     }
-    //console.log(temp2);
-    //console.log(-omega2 * fl * t);
-    //console.log(pow(E, -omega2 * fl * t));
+    console.log(temp2);
+    console.log(pow(E, -fl * t));
+    console.log(pow(E, -fl * t) * temp2);
 
     const ps2 = pow(E, -fl * t) * temp2;
     const tt2 = ((s + 1) / omega1) * t1;
 
-    console.log(ps1);
-    console.log(ps2);
+    //console.log(ps1);
+    //console.log(ps2);
     //console.log(tt1);
     //console.log(tt2);
 
@@ -273,9 +277,9 @@ class OutputData extends React.Component {
           </thead>
           <tbody>
             <tr>
-              <td>{fifthTask.ps1.toFixed(7)}</td>
+              <td>{fifthTask.ps1.toFixed(4)}</td>
               <td>{fifthTask.tt1.toFixed(4)}</td>
-              <td>{fifthTask.ps2.toFixed(7)}</td>
+              <td>{fifthTask.ps2.toFixed(10)}</td>
               <td>{fifthTask.tt2.toFixed(4)}</td>
             </tr>
           </tbody>
