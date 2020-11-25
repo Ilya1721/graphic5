@@ -1,6 +1,26 @@
 import React from "react";
+import Dygraph from "dygraphs";
+import { graphConfig } from "../config/config";
 
 class OutputData extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.graphRef = React.createRef();
+    this.config = graphConfig;
+    this.state = {
+      firstTask: {},
+      secondTask: {},
+      thirdTask: {},
+      fourthTask: {},
+      fifthTask: {},
+    };
+  }
+
+  componentDidMount() {
+    this.setState(this.calculate(), this.buildGraph);
+  }
+
   calculate = () => {
     return {
       firstTask: this.calcFirst(),
@@ -121,36 +141,40 @@ class OutputData extends React.Component {
     }
 
     let temp = 0;
-    /*for (let i = omega2; i <= omega2 + s; i++) {
-      temp += 1 / i;
-    }*/
     for (let i = 0; i <= omega2 - s; i++) {
       temp += 1 / (s + i);
     }
     const tt1 = t2 * (1 / fl) * temp;
-    //const tt1 = t2 * temp;
 
     let temp2 = 0;
     for (let i = 0; i < s; i++) {
       temp2 += pow(fl * t, i) / factorial(i);
     }
-    console.log(temp2);
-    console.log(pow(E, -fl * t));
-    console.log(pow(E, -fl * t) * temp2);
 
     const ps2 = pow(E, -fl * t) * temp2;
     const tt2 = ((s + 1) / omega1) * t1;
 
-    //console.log(ps1);
-    //console.log(ps2);
-    //console.log(tt1);
-    //console.log(tt2);
+    let graph = [];
+    for (let t = 0; t <= 1; t += 0.1) {
+      let temp3 = 0;
+      for (let i = 0; i < s; i++) {
+        temp3 += pow(fl * t, i) / factorial(i);
+      }
+      graph.push(t);
+      graph.push(temp3);
+    }
+
+    let string = "x, y\n";
+    for (let i = 0; i < graph.length - 1; i += 2) {
+      string += `${graph[i].toFixed(4)}, ${graph[i + 1].toFixed(4)}\n`;
+    }
 
     return {
       ps1,
       tt1,
       ps2,
       tt2,
+      string,
     };
   };
 
@@ -164,6 +188,14 @@ class OutputData extends React.Component {
     }
 
     return f;
+  };
+
+  buildGraph = () => {
+    return new Dygraph(
+      this.graphRef.current,
+      this.state.fifthTask.string,
+      this.config
+    );
   };
 
   render() {
@@ -284,6 +316,8 @@ class OutputData extends React.Component {
             </tr>
           </tbody>
         </table>
+        <h3 className="margin-top">Графік</h3>
+        <div className="graph margin-top" ref={this.graphRef}></div>
       </div>
     );
   }
