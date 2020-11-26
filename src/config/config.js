@@ -17,7 +17,7 @@ export const graphConfig = {
   rightGap: 50,
   digitsAfterDecimal: 4,
   xRangePad: 10,
-  stepPlot: true,
+  stepPlot: false,
 };
 
 export default { graphConfig };
